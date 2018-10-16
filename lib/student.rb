@@ -10,7 +10,7 @@ class Student
       # creates the students table in the database
     # .drop_table
       # drops the students table from the database
-    save
+    # save
       # saves an instance of the Student class to the database and then sets the given students `id` attribute
     # updates a record if called on an object that is already persiste
     # .create

@@ -8,10 +8,20 @@ class Student
     @name  = name
     @grade = grade
   end 
-    # has a name and a grade
-    # has an id that defaults to `nil` on initialization
-    # .create_table
+
+  def self.create_table
       # creates the students table in the database
+    sql = <<-SQL
+      CREATE TABLE IF NOT EXISTS students (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        grade TEXT
+        )
+    SQL
+    DB[:conn].execute(sql)
+  end 
+      
+      
     # .drop_table
       # drops the students table from the database
     # save

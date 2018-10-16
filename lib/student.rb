@@ -55,6 +55,11 @@ class Student
       # returns an instance of student that matches the name from the DB
     
     
-    # update
-      # updates the record associated with a given instance 
+  def update
+      # updates the record associated with a given instance
+    sql = <<-SQL
+      UPDATE students SET name = ?, grade = ? WHERE id = ?
+    SQL
+    DB[:conn].execute(sql, self.name, self.grade, self.id)
+  end
 end

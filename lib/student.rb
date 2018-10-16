@@ -56,8 +56,17 @@ class Student
     new_student
   end
     
-    # .find_by_name
+  def self.find_by_name(name)
       # returns an instance of student that matches the name from the DB
+    sql = <<-SQL
+      SELECT *
+        FROM students
+        WHERE name = ?
+    SQL
+    DB[:conn].execute(sql, name).map do |row|
+      self.new_from_db(row)
+    end 
+  end 
     
     
   def update

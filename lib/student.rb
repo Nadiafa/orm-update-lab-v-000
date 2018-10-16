@@ -23,15 +23,23 @@ class Student
    
       
   def self.drop_table
-      # drops the students table from the database
     sql = "DROP TABLE IF EXISTS students"
     DB[:conn].execute(sql)
   end 
     
     
-    # save
-      # saves an instance of the Student class to the database and then sets the given students `id` attribute
+  def save
+    # saves an instance of the Student class to the database and then sets the given students `id` attribute
     # updates a record if called on an object that is already persiste
+    if self.id 
+      self.update 
+    else 
+      sql = <<-SQL
+        INSERT INTO students (name, grade)
+          VALUES (?, ?)
+      SQL
+      DB[:conn].execute(sql, name, grade)
+  end
     
     
     # .create

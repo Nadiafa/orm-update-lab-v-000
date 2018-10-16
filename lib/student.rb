@@ -47,16 +47,19 @@ class Student
     student
   end 
     
-    # .new_from_db
+  def self.new_from_db
       # creates an instance with corresponding attribute values
+    new_student = Student.new(name, grade)
     
+    
+    
+  end
     
     # .find_by_name
       # returns an instance of student that matches the name from the DB
     
     
   def update
-      # updates the record associated with a given instance
     sql = <<-SQL
       UPDATE students SET name = ?, grade = ? WHERE id = ?
     SQL

@@ -19,6 +19,6 @@ class Student
       # creates an instance with corresponding attribute values
     # .find_by_name
       # returns an instance of student that matches the name from the DB
-    update
+    # update
       # updates the record associated with a given instance 
 end

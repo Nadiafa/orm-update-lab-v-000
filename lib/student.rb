@@ -24,7 +24,7 @@ class Student
       
   def self.drop_table
       # drops the students table from the database
-    sql = "DROP IF EXISTS students"
+    sql = "DROP TABLE IF EXISTS students"
     DB[:conn].execute(sql)
   end 
     

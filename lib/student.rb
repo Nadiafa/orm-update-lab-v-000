@@ -19,15 +19,12 @@ class Student
     SQL
     DB[:conn].execute(sql)
   end 
-   
-   
-      
+
   def self.drop_table
     sql = "DROP TABLE IF EXISTS students"
     DB[:conn].execute(sql)
   end 
-    
-    
+ 
   def save
     if self.id 
       self.update 
@@ -48,7 +45,6 @@ class Student
   end 
     
   def self.new_from_db(row)
-      # creates an instance with corresponding attribute values
     new_student = Student.new(name, grade)
     new_student.id    = row[0]
     new_student.name  = row[1]
@@ -57,7 +53,6 @@ class Student
   end
     
   def self.find_by_name(name)
-      # returns an instance of student that matches the name from the DB
     sql = <<-SQL
       SELECT *
         FROM students
@@ -67,8 +62,7 @@ class Student
       self.new_from_db(row)
     end 
   end 
-    
-    
+
   def update
     sql = <<-SQL
       UPDATE students SET name = ?, grade = ? WHERE id = ?
